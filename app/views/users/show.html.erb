@@ -1,0 +1,9 @@
+<h1>Book Finder</h1>
+<h2>Welcome to <%= @user.username%>'s homepage! </h2>
+
+<h3>Here are the books reviewed by <%=@user.username%>:</h3>
+<ul>
+  <% @user.reviewed_books.each do |r|%>
+  <li> <%= link_to r.name_and_category, book_path(r)%> </li>
+  <% end %>
+</ul>

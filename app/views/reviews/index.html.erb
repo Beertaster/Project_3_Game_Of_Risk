@@ -1,0 +1,15 @@
+<% if @book %>
+  <h1>Reviews for <%= @book.name %> - <%= @book.genre %></h1>
+<% else %>
+  <h1>All the Reviews </h1>
+<% end %>
+
+<ul>
+<% @reviews.each do |review| %>
+
+  <li>
+  <%= review.book.name%>: <%= link_to review.title, review_path(review)%> - <%= review.stars%> 
+  </li> <br>
+
+<% end %>
+</ul>

@@ -1,0 +1,12 @@
+<h1>All the Books</h1>
+<%= form_tag('/books',:method=>:get) do %>                          
+<%= select_tag "genre_id", options_from_collection_for_select(Genre.all, "id", "name", params[:genre_id]), include_blank: 'Select One' %>    
+<%= submit_tag %>
+<% end %>
+
+<% @books.each do |r| %>
+
+  <h2><%= link_to r.name, book_path(r.id)%> - <%= r.genre.name %> - <%= r.price_range %> </h2>
+  <%= link_to "Write a review", new_book_review_path(r.id) %> 
+  <p><%= r.address %></p>
+  <% end %>

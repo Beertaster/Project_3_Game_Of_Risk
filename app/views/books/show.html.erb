@@ -1,0 +1,15 @@
+<h1><%= @book.name%>  </h1>
+
+
+<h2> <%= @book.category_name %> </h2>
+<div>
+  <p><%= @book.price_range %></p>
+  <p><%= @book.address %></p>
+</div>
+
+
+<%= link_to "Edit #{@book.name}", edit_restaurant_path(@book) if @book.user == current_user%>
+
+<br></br>
+
+<%= link_to "See all Reviews", restaurant_reviews_path(@book) %>

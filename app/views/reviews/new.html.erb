@@ -1,0 +1,35 @@
+<%=  display_header(@review)%> 
+<%= render partial: 'layouts/errors', locals: {object: @review}  %>
+
+
+
+<%= form_for(@review) do |f|%>
+  <% if params[:book_id] %>
+    <%= f.hidden_field :book_id %>
+  <% else %>
+    <div>
+      <%= f.label :book_id, "Select a Book" %>
+      <%= f.collection_select :book_id, Book.alpha, :id, :name_and_genre, include_blank: true %>
+    </div>
+  <% end %>
+  <div>
+    <%= f.label :stars %>
+    <%= f.number_field :stars, min:0, max:5 %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content, size: "25x10" %>
+  </div>
+  <br>
+
+
+
+  <%= f.submit %>
+
+<% end %>
